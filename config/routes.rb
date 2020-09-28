@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :contacts
       resources :resumes
+
       resources :hotel_infos do
         resources :locations
       end
+      
     end
   end 
   

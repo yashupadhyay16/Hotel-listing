@@ -2,7 +2,8 @@ module Api
 	module V1
 		class ResumesController < ApplicationController
 			def index
-				@resumes = Resume.all.with_attached_resume
+				resumes = Resume.all.with_attached_resume
+				render json: resumes
 				#render json: resumes.last(5).collect{ |x| {"id" => x.id, "file_path" => x.avatar_path, "" } }
 			end    
 			
@@ -23,7 +24,6 @@ module Api
 			private
 
 			def resume_params
-				
 				params.require(:resume).permit(:fname,:lname,:email,:contact,:experience,:role,:resume)
 			end  
 		end    
