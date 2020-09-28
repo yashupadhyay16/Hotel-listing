@@ -1,4 +1,3 @@
-
 json.resumes @resumes do |resume|
     json.id resume.id
     json.fname resume.fname
