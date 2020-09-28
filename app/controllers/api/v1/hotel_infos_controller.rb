@@ -1,6 +1,7 @@
-class HotelInfosController < ApplicationController
+module Api
+  module V1
+    class HotelInfosController < ApplicationController
     before_action :require_id, only: %i[show destroy update]
-    skip_before_action :verify_authenticity_token
     def create
         @hotel = HotelInfo.new(hotel_params)
         if @hotel.save
@@ -48,4 +49,6 @@ class HotelInfosController < ApplicationController
   def hotel_params
     params.require(:hotel).permit(:name, :price, :address, :image_url)
   end
+end
+end
 end

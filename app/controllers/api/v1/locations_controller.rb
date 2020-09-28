@@ -1,8 +1,8 @@
+module Api
+  module V1
 # frozen_string_literal: true
 class LocationsController < ApplicationController
   before_action :require_location_id
-  skip_before_action :verify_authenticity_token
-
   def create
     @hotel = HotelInfo.find_by(id: params[:hotel_info_id])
     @location = @hotel.locations.new(location_params)
@@ -41,4 +41,6 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(:name, :latitude, :longitude)
   end
+end
+end
 end
