@@ -7,28 +7,26 @@ class LocationsController < ApplicationController
     @hotel = HotelInfo.find_by(id: params[:hotel_info_id])
     @location = @hotel.locations.new(location_params)
     if @location.save
-      respond_to do |format|
         msg = { message: 'Location Created', status: 'ok' }
-        format.json { render json: msg }
-      end
+        render json: msg
+    else
+        render json: {error: "error unable to create"}
     end
   end
-
   def update
     if @location.update(location_params)
-      respond_to do |format|
         msg = { message: 'Location Update Sccessfully', status: 'ok' }
-        format.json { render json: msg }
-      end
+        render json: msg
+    else
+        render json: {error: "error unable to update"}
     end
   end
-
   def destroy
     if @location.destroy
-      respond_to do |format|
         msg = { message: 'Location Deleted Sccessfully', status: 'ok' }
-        format.json { render json: msg }
-      end
+        render json: msg
+    else
+        render json: {error: "error unable to delete"}
     end
   end
 
