@@ -2,8 +2,8 @@ module Api
 	module V1
 		class ResumesController < ApplicationController
 			def index
-				resumes = Resume.all.with_attached_resume
-				render json: resumes
+				@resumes = Resume.all.with_attached_resume
+				render json: @resumes
 				#render json: resumes.last(5).collect{ |x| {"id" => x.id, "file_path" => x.avatar_path, "" } }
 			end    
 			
